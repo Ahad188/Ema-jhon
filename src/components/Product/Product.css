@@ -1,0 +1,44 @@
+.product{
+     height: 500px;
+     border: 2px solid gray;
+     border-radius: 8px;
+     position: relative;
+     box-shadow: 4px 5px 5px 0.7px rgb(203, 193, 193);
+}
+.product img{
+     width: 340px;
+     height: 250px;
+     margin: 7px;
+     border-radius: 8px;
+}
+.card-info{
+     margin: 10px;
+}
+.card-info h4{
+     color: rgb(110, 207, 237);
+     font-weight: 400;
+     margin-top: 5px;
+     margin-bottom: 0;
+}
+.card-info h3{
+     margin-top: 5px;
+     color: olive;
+}
+.card-info h5{
+     margin-top: 5px;
+}
+.btn-card{
+     position: absolute;
+     margin-top: 5px;
+     bottom: 0;
+     width: 100%;
+     background: rgb(238, 144, 235);
+     outline: none;
+     border: none;
+
+}
+.btn-card:hover{
+     background: orange;
+     outline: none;
+     border: none;
+}

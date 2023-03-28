@@ -1,0 +1,23 @@
+nav{
+     display: flex;
+     justify-content: space-between;
+     background: #21414f;
+     padding: 10px;
+     width: 100%;
+}
+ul{
+     display: flex;
+}
+ul li{
+     list-style-type: none;
+     padding-left: 30px;
+}
+ ul li a{
+      color: #fff;;
+      margin-right: 2rem;
+      text-decoration: none;
+      font-size: 1.2rem;
+ }
+ ul li a:hover{
+     color:  orange;
+ }
