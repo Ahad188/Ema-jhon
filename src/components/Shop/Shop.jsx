@@ -9,6 +9,7 @@ import './Shop.css';
 
 const Shop = () => {
      const [Cart, setCart] = useState([]);
+     console.log(Cart)
      const [Products, setProducts] = useState([]);
      useEffect(()=>{
           fetch('fakeData/products.json')
@@ -17,13 +18,19 @@ const Shop = () => {
      },[]);
      useEffect(()=>{
           // console.log(Products)
+          const saveProduct = []
           const storeCard = getShoppingCart();
            for(const id in storeCard){
-               console.log(id)
-               const saveProduct = Products.find(product => product.id === id)
-               const quantity = storeCard[id]
-               saveProduct.quantity =   quantity
-               console.log(saveProduct)
+               // console.log(id)
+               const addedToProduct = Products.find(product => product.id === id);
+                if(addedToProduct){
+                    const mot = storeCard[id];
+                    addedToProduct.quantity = mot
+                    saveProduct.push(addedToProduct)
+                }
+                setCart(saveProduct)
+               // console.log(addedToProduct)
+               // console.log(mot)
            }
      },[Products])
 
