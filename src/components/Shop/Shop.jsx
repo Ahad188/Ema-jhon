@@ -9,7 +9,7 @@ import './Shop.css';
 
 const Shop = () => {
      const [Cart, setCart] = useState([]);
-     console.log(Cart)
+     // console.log(Cart)
      const [Products, setProducts] = useState([]);
      useEffect(()=>{
           fetch('fakeData/products.json')
