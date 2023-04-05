@@ -1,9 +1,10 @@
 import React from 'react';
+import { FaTrashAlt} from "react-icons/fa";
 import './Cards.css';
 
 
-const Cards = (props) => {
-     const  cart = props.cart;
+const Cards = ({cart,delletHandeler}) => {
+     // const  cart = props.cart;
      // console.log(cart.length)
      let Total = 0;
      let Transhipping = 0;
@@ -18,14 +19,18 @@ const Cards = (props) => {
       const GrandTotal = tax + Transhipping + Total;
      return (
           <div className='summary'>
-               <h2>Cart Summary</h2>
+               <p>Cart Summary</p>
                <hr />
-               <h4> cart items : {quantity}</h4>
-               <h3>Total Price : ${Total}</h3>
-               <h3>Shipping : ${Transhipping}</h3>
-               <h3>Tax : ${tax.toFixed(2)}</h3>
+               <p> cart items : {quantity}</p>
+               <p>Total Price : ${Total}</p>
+               <p>Shipping : ${Transhipping}</p>
+               <p>Tax : ${tax.toFixed(2)}</p>
                <hr />
-               <h2>GrandTotal : ${GrandTotal.toFixed(2)}</h2>
+               <p>GrandTotal :${GrandTotal.toFixed(2)}</p>
+                <button onClick={delletHandeler} className='btn-clear'>
+                    <span>Clear Cart</span>
+                    <FaTrashAlt></FaTrashAlt>
+                </button>
           </div>
      );
 };
