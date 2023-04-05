@@ -3,7 +3,7 @@ import { FaTrashAlt} from "react-icons/fa";
 import './Cards.css';
 
 
-const Cards = ({cart,delletHandeler}) => {
+const Cards = ({cart,delletHandeler,children}) => {
      // const  cart = props.cart;
      // console.log(cart.length)
      let Total = 0;
@@ -31,6 +31,7 @@ const Cards = ({cart,delletHandeler}) => {
                     <span>Clear Cart</span>
                     <FaTrashAlt></FaTrashAlt>
                 </button>
+                {children}
           </div>
      );
 };

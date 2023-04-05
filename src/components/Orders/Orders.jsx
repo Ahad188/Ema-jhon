@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Cards from '../Cards/Cards';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import ReviewItem from '../ReviewItem/ReviewItem';
  import './orders.css'
 import { deleteShoppingCart, removeFromDb } from '../../../utilities/fakedb';
@@ -35,7 +35,11 @@ const Orders = () => {
                     <Cards 
                     cart={cart}
                     delletHandeler={delletHandeler}
-                    ></Cards>
+                    >
+                          <Link to="/checkout">
+                              <button className='proceed'>Check Out</button>
+                          </Link>
+                    </Cards>
                </div>
           </div>
      );
