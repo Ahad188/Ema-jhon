@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Login.css'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 const Login = () => {
+
+     const [show,setShow] = useState(false)
+
      const {singIn} = useContext(AuthContext)
      const navigate = useNavigate()
+     const location = useLocation()
+     const from = location.state?.from?.pathname || '/'
      const handelLogin = (e)=>{
           e.preventDefault()
           const form = e.target;
@@ -18,7 +23,7 @@ const Login = () => {
                const userName = result.user
                console.log(userName);
                form.reset()
-               navigate('/shop')
+               navigate(from,{replace:true})
           })
           .catch(err=>console.log(err))
      }
@@ -32,7 +37,14 @@ const Login = () => {
                </div>
                <div className='form-control'>
                     <label htmlFor="password">Password</label>
-                    <input type="password" name="password" id="" required />
+                    <input type={show ? "text": "password"} name="password" id="" required />
+                    <p onClick={()=>setShow(!show)} className='show'>
+                         <small>
+                         {
+                              show ? <span>Hide password</span> : <span>Show Password</span>
+                         }
+                         </small>
+                    </p>
                </div>
                 
                <input className="btn-submit" type="submit" value="SingUp" />

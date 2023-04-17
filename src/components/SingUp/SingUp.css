@@ -39,9 +39,10 @@
   .btn-submit:hover{
      background-color: rgba(255, 153, 0,0.6);
   }
-  p{
+  /* p{
      text-align: center;
-  }
+  } */
   .text-error{
-     color: red;
+     color: rgb(167, 63, 63);
+     text-align: center;
   }
