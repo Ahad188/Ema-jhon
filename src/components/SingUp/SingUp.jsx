@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './SingUp.css'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Provider/AuthProvider';
 const SingUp = () => {
      const [error,setError] = useState('')
+     const { creatUser} = useContext(AuthContext)
 
      const handelSingup = (e) =>{
           e.preventDefault()
@@ -19,6 +21,14 @@ const SingUp = () => {
                setError('Password must be 6 character or longer')
                return;
           }
+          creatUser(email,password)
+          .then(result=>{
+               const logUser = result.user; 
+               console.log(logUser);
+               
+               form.reset()
+          })
+          .catch(err=>console.log(err))
      }
      return (
           <div className='from-container'>
