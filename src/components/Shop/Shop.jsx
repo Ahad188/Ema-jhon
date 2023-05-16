@@ -19,7 +19,7 @@ const Shop = () => {
       
      // console.log(totalProduct, totalPages );
 
-console.log(Products);
+// console.log(Products);
 
 
      // useEffect(()=>{
@@ -44,19 +44,33 @@ console.log(Products);
 
      useEffect(()=>{
           // console.log(Products)
-          const saveProduct = [];
+          
           const storeCard = getShoppingCart();
-           for(const id in storeCard){
-               // console.log(id)
-               const addedToProduct = Products.find(product => product._id === id);
-                if(addedToProduct){
-                    const quantity = storeCard[id];
-                    addedToProduct.quantity = quantity;
-                    saveProduct.push(addedToProduct);
-                }
-                setCart(saveProduct);
-           }
-     },[Products])
+          const ids = Object.keys(storeCard);
+
+          fetch(`http://localhost:5000/productsByIds`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(ids)
+        })
+        .then(res=>res.json())
+        .then(cartProduct=>{
+          console.log(cartProduct , "jkhfhsahasfio");
+          const saveProduct = [];
+          for(const id in storeCard){
+              // console.log(id)
+              const addedToProduct = cartProduct.find(product => product._id === id);
+               if(addedToProduct){
+                   const quantity = storeCard[id];
+                   addedToProduct.quantity = quantity;
+                   saveProduct.push(addedToProduct);
+               }
+               setCart(saveProduct);
+          }
+        })  
+     },[])
 
      const addToCard = (Data)=>{
           const newCarts = [...Cart,Data];
